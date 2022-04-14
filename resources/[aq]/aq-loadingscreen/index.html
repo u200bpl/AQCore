@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="style/style.css">
+		<title>AQ Loadingscreen</title>
+	</head>
+	<body>
+		<header>
+			<p>Gebruik <strong>SPATIEBALK</strong> om de audio af te spelen of te muten</p>
+		</header>
+
+		<main>
+			<div class="clouds">
+				<img src="img/cloud1.png" style="--i:1;">
+				<img src="img/cloud2.png" style="--i:2;">
+				<img src="img/cloud3.png" style="--i:3;">
+				<img src="img/cloud4.png" style="--i:4;">
+				<img src="img/cloud5.png" style="--i:5;">
+			</div>
+
+			<section>
+				<img src="img/1024x1024_black.png" style="--i:1;">
+			</section>
+
+			<audio id="loading" src="audio/wind.mp3" autoplay="true" hidden="true" loop="true"></audio>    
+		</main>
+
+		<script>
+			var play = false;
+				var vid = document.getElementById("loading");
+				vid.volume = 0.1;
+				window.addEventListener('keyup', function(e)
+				{
+					if (e.which == 69){
+						vid.volume = Math.min(vid.volume + 0.1,1);
+					} else if(e.which == 65){
+						vid.volume = Math.max(vid.volume - 0.1,0);
+					};
+				});
+
+				var audio = document.querySelector('audio');
+				if (audio) {
+				window.addEventListener('keydown', function (event) {
+				var key = event.which || event.keyCode;
+				if (key === 32) { // spacebar
+					event.preventDefault();
+					audio.paused ? audio.play() : audio.pause();
+				}
+	      
+				});
+			}
+      </script>
+	</body>
+</html>
